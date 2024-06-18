@@ -123,7 +123,7 @@ public:
                      const log_err_handler err_handler,
                      const async_overflow_policy overflow_policy = async_overflow_policy::block_retry,
                      const std::function<void()>& worker_warmup_cb = nullptr,
-                     const std::chrono::milliseconds& flush_interval_ms = std::chrono::milliseconds::zero(),
+                     const std::chrono::milliseconds& flush_interval_ms = std::chrono::milliseconds(0),
                      const std::function<void()>& worker_teardown_cb = nullptr);
 
     void log(const details::log_msg& msg);
@@ -331,7 +331,7 @@ inline bool spdlog::details::async_log_helper::process_next_msg(log_clock::time_
 // flush all sinks if _flush_interval_ms has expired
 inline void spdlog::details::async_log_helper::handle_flush_interval(log_clock::time_point& now, log_clock::time_point& last_flush)
 {
-    auto should_flush = _flush_requested || (_flush_interval_ms != std::chrono::milliseconds::zero() && now - last_flush >= _flush_interval_ms);
+    auto should_flush = _flush_requested || (_flush_interval_ms != std::chrono::milliseconds(0) && now - last_flush >= _flush_interval_ms);
     if (should_flush)
     {
         for (auto &s : _sinks)

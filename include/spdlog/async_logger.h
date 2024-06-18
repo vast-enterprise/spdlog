@@ -41,7 +41,7 @@ public:
                  size_t queue_size,
                  const async_overflow_policy overflow_policy =  async_overflow_policy::block_retry,
                  const std::function<void()>& worker_warmup_cb = nullptr,
-                 const std::chrono::milliseconds& flush_interval_ms = std::chrono::milliseconds::zero(),
+                 const std::chrono::milliseconds& flush_interval_ms = std::chrono::milliseconds(0),
                  const std::function<void()>& worker_teardown_cb = nullptr);
 
     async_logger(const std::string& logger_name,
@@ -49,7 +49,7 @@ public:
                  size_t queue_size,
                  const async_overflow_policy overflow_policy = async_overflow_policy::block_retry,
                  const std::function<void()>& worker_warmup_cb = nullptr,
-                 const std::chrono::milliseconds& flush_interval_ms = std::chrono::milliseconds::zero(),
+                 const std::chrono::milliseconds& flush_interval_ms = std::chrono::milliseconds(0),
                  const std::function<void()>& worker_teardown_cb = nullptr);
 
     async_logger(const std::string& logger_name,
@@ -57,7 +57,7 @@ public:
                  size_t queue_size,
                  const async_overflow_policy overflow_policy =  async_overflow_policy::block_retry,
                  const std::function<void()>& worker_warmup_cb = nullptr,
-                 const std::chrono::milliseconds& flush_interval_ms = std::chrono::milliseconds::zero(),
+                 const std::chrono::milliseconds& flush_interval_ms = std::chrono::milliseconds(0),
                  const std::function<void()>& worker_teardown_cb = nullptr);
 
     //Wait for the queue to be empty, and flush synchronously

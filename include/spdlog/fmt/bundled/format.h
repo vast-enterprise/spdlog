@@ -1672,7 +1672,7 @@ public:
 template <typename Impl, typename Result>
 class ArgVisitor
 {
-private:
+protected:
     typedef internal::Arg Arg;
 
 public:
